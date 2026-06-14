@@ -194,6 +194,25 @@
     opacity: 0;
     animation: fadeUp 0.9s ease 0.7s forwards;
   }
+  .hero-photo {
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 52px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.8s forwards;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: center 40%;
+    display: block;
+    border-radius: 6px;
+  }
+  @media (max-width: 560px) {
+    .hero-photo img { height: 220px; }
+  }
 
   /* ══ 2. WORRIES ══ */
   #worries { background: var(--warm-white); }
@@ -640,6 +659,9 @@
       </a>
     </div>
     <p class="hero-salon">陽 -Akari- ｜ マタニティ・産後専門 赤ちゃん連れOKサロン</p>
+    <div class="hero-photo">
+      <img src="images/hero.jpg" alt="陽 -Akari- サロン外観">
+    </div>
   </div>
 </section>
 
