@@ -90,7 +90,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--warm-brown);
+    background: #D4ACAF;
     color: #fff;
     font-family: var(--font-serif);
     font-size: 14px;
@@ -142,7 +142,7 @@
     background: radial-gradient(circle, rgba(232,196,184,0.25) 0%, transparent 70%);
     pointer-events: none;
   }
-  .hero-inner { max-width: 680px; margin: 0 auto; padding: 100px 0 80px; }
+  .hero-inner { max-width: 680px; margin: 0 auto; padding: 100px 0 80px; position: relative; }
   .hero-label {
     font-family: var(--font-latin);
     font-size: 13px;
@@ -194,24 +194,57 @@
     opacity: 0;
     animation: fadeUp 0.9s ease 0.7s forwards;
   }
-  .hero-photo {
-    width: 100%;
-    border-radius: 6px;
-    overflow: hidden;
-    margin-top: 52px;
+  .hero-catch-wrap {
+    position: relative;
+    margin-bottom: 36px;
     opacity: 0;
-    animation: fadeUp 0.9s ease 0.8s forwards;
+    animation: fadeUp 0.9s ease 0.25s forwards;
+  }
+  .hero-bg-photo {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    width: 60%;
+    opacity: 0.22;
+    pointer-events: none;
+  }
+  .hero-bg-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .hero-catch {
+    margin-bottom: 0;
+    opacity: 1;
+    animation: none;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-photo { display: none; }
+  .hero-salon-photo {
+    width: 100%;
+    margin-top: 40px;
+    border-radius: 12px;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 1s forwards;
+  }
+  .hero-salon-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+  }
+  @media (max-width: 560px) {
+    .hero-salon-photo img { height: 200px; }
   }
   .hero-photo img {
     width: 100%;
-    height: 320px;
-    object-fit: cover;
-    object-position: center 40%;
+    height: auto;
     display: block;
-    border-radius: 6px;
-  }
-  @media (max-width: 560px) {
-    .hero-photo img { height: 220px; }
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    box-shadow: 0 8px 32px rgba(107,79,58,0.12);
   }
 
   /* ══ 2. WORRIES ══ */
@@ -416,6 +449,8 @@
     line-height: 1.8;
   }
   .reviews-sub { font-size: 13px; color: var(--mid-gray); margin-bottom: 36px; }
+  .reviews-photo-wrap { text-align: center; margin: 32px 0; }
+  .reviews-photo { width: 100%; max-width: 480px; border-radius: 16px; object-fit: cover; height: 360px; object-position: center 55%; }
   .review-cards { display: flex; flex-direction: column; gap: 20px; }
   .review-card {
     background: var(--warm-white);
@@ -557,17 +592,16 @@
   }
 
   /* ══ 10. OFFER② ══ */
-  #offer2 { background: var(--warm-brown); color: #fff; text-align: center; }
-  #offer2 .offer-tag { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.85); }
-  #offer2 .offer-title { color: #fff; }
-  #offer2 .offer-price { color: var(--blush); }
+  #offer2 { background: #EDE4D8; color: var(--charcoal); text-align: center; }
+  #offer2 .offer-tag { border-color: var(--gold); color: var(--warm-brown); }
+  #offer2 .offer-title { color: var(--warm-brown); }
+  #offer2 .offer-price { color: var(--blush-dark); }
   #offer2 .offer-unit,
-  #offer2 .offer-original { color: rgba(255,255,255,0.65); }
-  #offer2 .offer-menu span { background: rgba(255,255,255,0.12); color: #fff; }
-  #offer2 .cta-block .note { color: rgba(255,255,255,0.55); }
+  #offer2 .offer-original { color: var(--mid-gray); }
+  #offer2 .offer-menu span { background: rgba(255,255,255,0.6); color: var(--charcoal); }
+  #offer2 .cta-block .note { color: var(--mid-gray); }
   #offer2 .btn-reserve {
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.4);
+    background: #D4ACAF;
   }
 
   /* ══ 11. ACCESS ══ */
@@ -636,21 +670,26 @@
 <section id="hero">
   <div class="hero-inner">
     <span class="hero-label">Postnatal Care Salon · Kawagoe, Saitama</span>
-    <h1 class="hero-catch">
-      <span>10年後も元気なママでいるために。</span><br>
-      赤ちゃんと一緒に、<br>
-      産後ケアはじめませんか。
-    </h1>
+    <div class="hero-catch-wrap">
+      <div class="hero-bg-photo">
+        <img src="images/mother-baby.png" alt="">
+      </div>
+      <h1 class="hero-catch">
+        <span>10年後も元気なママでいるために。</span><br>
+        赤ちゃんと一緒に、<br>
+        産後ケアはじめませんか。
+      </h1>
+    </div>
     <div class="hero-body">
       <p>ママは、家族の中の太陽です。<br>
       あなたが元気だと、家族も明るくなります。</p>
       <p>でも産後の自分のことは後回しにしていませんか？<br>
-      そのつらさ、ちゃんと諦めなくてよいのです。</p>
+      そのつらさ、まだ諦めなくて大丈夫です。</p>
       <p>新河岸・完全プライベートサロン<br>
       赤ちゃん連れでどうぞ気軽にいらしてください。</p>
     </div>
     <p class="hero-salon">陽 -Akari- ｜ マタニティ産後専門整体・赤ちゃん整体</p>
-    <div class="hero-photo">
+    <div class="hero-salon-photo">
       <img src="images/hero.jpg" alt="陽 -Akari- サロン外観">
     </div>
   </div>
@@ -819,6 +858,9 @@
     <span class="section-label">Google Reviews</span>
     <h2 class="reviews-catch">多くのママが変化を実感されています</h2>
     <p class="reviews-sub">Googleの口コミより</p>
+    <div class="reviews-photo-wrap">
+      <img src="images/review-photo.jpg" alt="施術の様子" class="reviews-photo">
+    </div>
     <div class="review-cards">
 
       <div class="review-card">
@@ -930,7 +972,7 @@
       </div>
       <div class="faq-a">
         <span class="faq-a-label">A</span>
-        <span class="faq-a-text">大丈夫です。まずカウンセリングから始めますので、いきなり施術ということはありません。一人なことは何でも聞かせてください。</span>
+        <span class="faq-a-text">大丈夫です。まずカウンセリングから始めますので、いきなり施術ということはありません。不安なことは何でも教えてください。ご主人とご一緒に来院されてもかまいません。</span>
       </div>
     </div>
 
@@ -1010,6 +1052,10 @@
     <div class="access-row">
       <span class="access-label">予約</span>
       <span>完全予約制（LINE または 予約フォームより）</span>
+    </div>
+    <div class="access-row">
+      <span class="access-label">駐車場</span>
+      <span>駐車場はございません。近隣の有料駐車場をご利用ください。</span>
     </div>
     <div class="access-map" style="padding:0;overflow:hidden;">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d812.8!2d139.4966964!3d35.8903484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018db4cb82645d7%3A0x98fbf939dae7a98e!2z44Oe44K_44OL44OG44Kj55iC5b6M5pW054ip44O744Gq44Gh44KD44KT5pW054ip5L2T!5e0!3m2!1sja!2sjp!4v1" width="100%" height="240" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
