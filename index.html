@@ -1124,20 +1124,27 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     });
   });
 </script>
-<!-- Metaピクセル: 予約・LINEボタンのクリックをLeadとして計測 -->
+<!-- Metaピクセル: リザービアの予約ボタンクリックでLeadを発火（PageViewは<head>のまま） -->
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.btn-reserve').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: '予約ボタン' }); }
+  (function () {
+    function bindReservaLead() {
+      var buttons = document.querySelectorAll('a[href*="reservia.jp"]');
+      buttons.forEach(function (btn) {
+        if (btn.dataset.fbLeadBound === '1') { return; }
+        btn.dataset.fbLeadBound = '1';
+        btn.addEventListener('click', function () {
+          if (typeof fbq === 'function') {
+            fbq('track', 'Lead');
+          }
+        });
       });
-    });
-    document.querySelectorAll('.btn-line').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: 'LINE問い合わせ' }); }
-      });
-    });
-  });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindReservaLead);
+    } else {
+      bindReservaLead();
+    }
+  })();
 </script>
 </body>
 </html>
