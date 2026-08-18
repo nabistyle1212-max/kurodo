@@ -11,6 +11,23 @@
   gtag('js', new Date());
   gtag('config', 'AW-16780956151');
 </script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1923407814695448');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <title>陽（Akari）｜川越・新河岸の産後ケアサロン</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1103,6 +1120,21 @@
         gtag('event', 'conversion', {
           'send_to': 'AW-16780956151/7MZiCP7Cg9UcEPej5ME-'
         });
+      });
+    });
+  });
+</script>
+<!-- Metaピクセル: 予約・LINEボタンのクリックをLeadとして計測 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.btn-reserve').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: '予約ボタン' }); }
+      });
+    });
+    document.querySelectorAll('.btn-line').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: 'LINE問い合わせ' }); }
       });
     });
   });
