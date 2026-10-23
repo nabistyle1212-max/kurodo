@@ -534,10 +534,20 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
   }
   .faq-item {
     border-bottom: 1px solid var(--light-gray);
-    padding: 24px 0;
   }
   .faq-item:first-of-type { border-top: 1px solid var(--light-gray); }
-  .faq-q { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 14px; }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 24px 0;
+    font-family: inherit;
+  }
   .faq-q-label {
     font-family: var(--font-latin);
     font-size: 20px;
@@ -553,8 +563,40 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     font-weight: 400;
     color: var(--charcoal);
     line-height: 1.7;
+    flex: 1;
   }
-  .faq-a { display: flex; gap: 16px; align-items: flex-start; }
+  .faq-q-icon {
+    flex-shrink: 0;
+    width: 16px; height: 16px;
+    position: relative;
+    margin-top: 5px;
+    transition: transform 0.3s ease;
+  }
+  .faq-q-icon::before,
+  .faq-q-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--sage-dark);
+    transition: opacity 0.3s ease;
+  }
+  .faq-q-icon::before { top: 7px; left: 0; width: 16px; height: 2px; }
+  .faq-q-icon::after { top: 0; left: 7px; width: 2px; height: 16px; }
+  .faq-item.open .faq-q-icon::after { opacity: 0; }
+  .faq-a {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
+    transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.35s ease;
+  }
+  .faq-item.open .faq-a {
+    max-height: 600px;
+    opacity: 1;
+    padding: 0 0 24px;
+  }
   .faq-a-label {
     font-family: var(--font-latin);
     font-size: 20px;
@@ -756,7 +798,7 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     <div class="worries-close">
       一つでも当てはまるなら、このページを読み続けてください。<br>
       そのつらさ、あなたのせいではありません。<br>
-      産後の体には、専門的なケアが必要なのです。
+      産後の体には、産後の変化に合わせたケアが大切です。
     </div>
     <div class="cta-block" style="margin-top:40px;">
       <a href="https://lin.ee/V1Rg8Bm" class="btn-line" target="_blank" rel="noopener">
@@ -862,10 +904,10 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     <h2 class="offer-title">まずは一度、体のことを<br>話しに来てください。</h2>
     <p class="offer-unit" style="margin-bottom:18px;">初回限定価格（税込）</p>
     <div class="price-list">
-      <div class="price-row"><span class="price-name">産後整体</span><span class="price-value">¥3,980</span></div>
+      <div class="price-row"><span class="price-name">産後整体</span><span class="price-value">¥4,980</span></div>
       <div class="price-row"><span class="price-name">マタニティ整体</span><span class="price-value">¥4,980</span></div>
-      <div class="price-row"><span class="price-name">赤ちゃん整体</span><span class="price-value">¥4,980</span></div>
     </div>
+    <p class="note" style="font-size:12px;color:var(--mid-gray);line-height:1.8;margin:-18px 0 30px;">※赤ちゃん整体は、産後整体をご利用の方のみにご提供しています。<br>赤ちゃん整体のみでの受付は終了しました。</p>
     <div class="cta-block">
       <a href="https://lin.ee/V1Rg8Bm" class="btn-line" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.169 2 11.29c0 4.359 2.857 8.034 6.943 9.418.508.094.694-.223.694-.494 0-.244-.009-.891-.014-1.749-2.825.622-3.421-1.374-3.421-1.374-.462-1.189-1.128-1.505-1.128-1.505-.922-.638.07-.625.07-.625 1.02.073 1.556 1.059 1.556 1.059.906 1.573 2.378 1.118 2.956.855.092-.664.354-1.118.644-1.375-2.255-.26-4.625-1.143-4.625-5.088 0-1.124.394-2.043 1.04-2.764-.104-.258-.451-1.307.099-2.724 0 0 .847-.276 2.775 1.051A9.527 9.527 0 0 1 12 6.836c.857.004 1.72.117 2.526.344 1.926-1.327 2.771-1.051 2.771-1.051.552 1.417.205 2.466.101 2.724.648.721 1.039 1.64 1.039 2.764 0 3.955-2.374 4.825-4.636 5.079.365.318.69.947.69 1.908 0 1.378-.013 2.489-.013 2.828 0 .274.184.593.699.493C19.146 19.32 22 15.647 22 11.29 22 6.169 17.523 2 12 2z"/></svg>
@@ -914,6 +956,30 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
           <div class="review-avatar">M</div>
           <div class="review-meta">
             <span class="review-stars">★★★★★</span>
+            <span class="review-date">7日前</span>
+          </div>
+        </div>
+        <p class="review-text">産後、身体中が痛く、寝返りをするのにも数十分、起き上がるのにも数十分かかるほどつらい日々を過ごしていました。<br><br>整形外科にも通いましたが、なかなか改善せず、どうしたらいいのか悩んでいた時に、助産師の方がやっているところなら自分の症状を伝えやすいのではないかと思い、Akariさんで施術を受けてみることにしました。<br><br>通い始めた頃は緊張していましたが、志賀さんがいつも笑顔で迎えてくださり、あっという間に通うことが楽しみになっていました。5ヶ月ほど通った今では、ぐっすり眠ることが出来るほど身体が楽になっています！あと少しで終わってしまうのが残念なほど、大切な時間を過ごさせていただいています(^^)<br><br>同じように産後の身体の痛みで悩んでいる方や、痛みだけでなく育児で悩んでいる方に、ぜひおすすめしたいです！</p>
+        <p class="review-source">Google レビュー</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">M</div>
+          <div class="review-meta">
+            <span class="review-stars">★★★★★</span>
+            <span class="review-date">3週間前</span>
+          </div>
+        </div>
+        <p class="review-text">産後の身体が辛くずっと産後整体を探していました。助産師さんが整体をやってるという安心感、子どもを連れて行けるとこが良くこちらに通うようになりました。<br><br>5回ほど通っていますが、施術後は身体が楽になっています。心地よくて眠くなります。履けなかったお気に入りのズボンが履けるようになったのは嬉しすぎました！！<br><br>お店はすごく落ち着ける雰囲気で、志賀さんも話やすくいつも話すぎてしまっていますが、何でも受け止めてくれます。わたしの癒しの場です。<br><br>託児枠の予約が取れなくても、床にマットを敷いて子どもの目線に合わせて環境を整えてくださいます。子どもが遊んでるのを横目にしながら、施術してもらう時間が幸せです。</p>
+        <p class="review-source">Google レビュー</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">M</div>
+          <div class="review-meta">
+            <span class="review-stars">★★★★★</span>
             <span class="review-date">7週間前</span>
           </div>
         </div>
@@ -930,30 +996,6 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
           </div>
         </div>
         <p class="review-text">産後整体で伺いました。ハンドマッサージでしっかり整えていただき施術後に体が軽くなった感覚がありました。またずっと痛かったところも伸ばしてもらい楽になりました。<br><br>以前他院では、少しマッサージしてもらってからその後ほとんどが電気治療だったため、こちらの店舗に出会えて良かったです。助産師さんということもあり普通の整体よりも安心して施術を受けることができ、育児についての相談にも乗っていただけて良かったです。</p>
-        <p class="review-source">Google レビュー</p>
-      </div>
-
-      <div class="review-card">
-        <div class="review-header">
-          <div class="review-avatar">K</div>
-          <div class="review-meta">
-            <span class="review-stars">★★★★★</span>
-            <span class="review-date">最近</span>
-          </div>
-        </div>
-        <p class="review-text">先日娘と共に初めて伺い、産後整体＆赤ちゃん整体をしていただきました。頭の形で悩んでいますが、話をきいて頂いたことで気持ちが楽になりました。タッチケアのやり方やまあるい抱っこの仕方なども丁寧に教えていただきました。<br><br>こういった"駆け込み寺"的な場所があることがいざという時の拠り所になるなぁと感じました。電車を乗り継いでもまた伺いたいなと思います！</p>
-        <p class="review-source">Google レビュー</p>
-      </div>
-
-      <div class="review-card">
-        <div class="review-header">
-          <div class="review-avatar">S</div>
-          <div class="review-meta">
-            <span class="review-stars">★★★★★</span>
-            <span class="review-date">昨日</span>
-          </div>
-        </div>
-        <p class="review-text">赤ちゃん整体を探していました。生後5ヶ月の子供の反り返り、股関節の硬さ、抱っこのしづらさが気になり診ていただきました。<br><br>店内は落ち着いた空間で、プライベート感が強く、一対一で施術してもらえるのでしっかりと子供と向き合うことができました。助産師さんとのことで赤ちゃんに関すること全般聞くことができ助かりました。<br><br>教えていただいた内容を家でも取り組み、2週間ほど経ちますが、なんと悩んでいた便秘が改善されました！同じような悩みを抱えている方には是非おすすめしたいと思います！</p>
         <p class="review-source">Google レビュー</p>
       </div>
 
@@ -980,10 +1022,11 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     <h2 class="faq-catch">よくあるご質問</h2>
 
     <div class="faq-item" style="border-top:1px solid var(--light-gray);">
-      <div class="faq-q">
+      <button type="button" class="faq-q" aria-expanded="false">
         <span class="faq-q-label">Q</span>
         <span class="faq-q-text">産後いつから通えますか？</span>
-      </div>
+        <span class="faq-q-icon" aria-hidden="true"></span>
+      </button>
       <div class="faq-a">
         <span class="faq-a-label">A</span>
         <span class="faq-a-text">経腟分娩の方は産後1ヶ月健診が終わってからお越しください。帝王切開の方は産後2ヶ月たって、お傷の痛みが落ち着いてからであれば大丈夫です。産後数年経っていても産後であることには変わりありません。どうぞ気軽にご相談ください。</span>
@@ -991,10 +1034,11 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">
+      <button type="button" class="faq-q" aria-expanded="false">
         <span class="faq-q-label">Q</span>
         <span class="faq-q-text">赤ちゃんが途中で泣いてしまったら？</span>
-      </div>
+        <span class="faq-q-icon" aria-hidden="true"></span>
+      </button>
       <div class="faq-a">
         <span class="faq-a-label">A</span>
         <span class="faq-a-text">大丈夫です。すぐそばで見られます。授乳・おむつ替えも随時OKです。赤ちゃんのペースに合わせて進めますので、遠慮なくお声がけください。</span>
@@ -1002,10 +1046,11 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">
+      <button type="button" class="faq-q" aria-expanded="false">
         <span class="faq-q-label">Q</span>
         <span class="faq-q-text">どんな服装で行けばいいですか？</span>
-      </div>
+        <span class="faq-q-icon" aria-hidden="true"></span>
+      </button>
       <div class="faq-a">
         <span class="faq-a-label">A</span>
         <span class="faq-a-text">動きやすいズボン、伸びやすい服でいらしてください。着替えのご用意は不要です。</span>
@@ -1013,10 +1058,11 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">
+      <button type="button" class="faq-q" aria-expanded="false">
         <span class="faq-q-label">Q</span>
         <span class="faq-q-text">妊娠中（マタニティ）でも通えますか？</span>
-      </div>
+        <span class="faq-q-icon" aria-hidden="true"></span>
+      </button>
       <div class="faq-a">
         <span class="faq-a-label">A</span>
         <span class="faq-a-text">はい、通えます。マタニティ専用メニューをご用意しています。妊娠の状態を確認しながら丁寧に対応いたします。ただし、切迫早産や前置胎盤等指摘されている方は施術出来かねます。施術後はお腹がふわふわになるので赤ちゃんのスペースも広がります。骨盤位の方は一度ご相談ください。</span>
@@ -1024,13 +1070,38 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">
+      <button type="button" class="faq-q" aria-expanded="false">
         <span class="faq-q-label">Q</span>
         <span class="faq-q-text">はじめてで一人で来るのが不安です</span>
-      </div>
+        <span class="faq-q-icon" aria-hidden="true"></span>
+      </button>
       <div class="faq-a">
         <span class="faq-a-label">A</span>
         <span class="faq-a-text">大丈夫です。まずカウンセリングから始めますので、いきなり施術ということはありません。不安なことは何でも教えてください。ご主人とご一緒に来院されてもかまいません。</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span class="faq-q-label">Q</span>
+        <span class="faq-q-text">支払方法は何が使えますか？</span>
+        <span class="faq-q-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a">
+        <span class="faq-a-label">A</span>
+        <span class="faq-a-text">現金・クレジットカード・PayPay・メルペイ・d払いがご利用いただけます。</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span class="faq-q-label">Q</span>
+        <span class="faq-q-text">予約のキャンセル・変更はできますか？</span>
+        <span class="faq-q-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a">
+        <span class="faq-a-label">A</span>
+        <span class="faq-a-text">キャンセルは前日までにご連絡ください。当日のキャンセルは施術料金の100%を申し受けます。ただし、日付の変更（ご予約の取り直し）の場合は無料です。ご連絡はLINEよりお願いいたします。</span>
       </div>
     </div>
 
@@ -1048,10 +1119,14 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
         <p class="about-img-name">志賀 諒子<br>Ryoko Shiga</p>
       </div>
       <div class="about-body">
-        <p>助産師として19年間、産後のママたちと関わる中でずっと感じていたことがあります。</p>
-        <p>「産院を退院したあと、サポートがほとんどなくなる。」</p>
-        <p>でも体のつらさはそこから本番だったりします。「もっと早くケアできていたら」と何度思ったかわかりません。その思いで、このサロンを立ち上げました。</p>
-        <p>一人ひとりに向き合い、体のことも育児のことも一緒に考えます。ママと赤ちゃん、両方向を照らすのが私の仕事です。</p>
+        <p>助産師として19年。<br>たくさんのママと赤ちゃんに寄り添ってきました。</p>
+        <p>その中で感じてきたのは、<br>本当に支えが必要なのは、退院して育児が始まってからだということ。</p>
+        <p>赤ちゃんを優先し、自分のことはいつも後回し。<br>そんなママを何度も見てきました。</p>
+        <p>だからこそ、<br>ママが自分の心と身体を大切にできる場所をつくりたい。</p>
+        <p>育児も、仕事も、自分の人生も。<br>どれも諦めてほしくない。</p>
+        <p>そんな想いから生まれたのが、陽（Akari）です。</p>
+        <p>ママと赤ちゃんの未来に、陽を灯す。</p>
+        <p>一人ひとりに寄り添い、これからも伴走していきます。</p>
         <ul class="license-list">
           <li>助産師免許・看護師免許</li>
           <li>産前産後専門整体師</li>
@@ -1073,10 +1148,10 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     <h2 class="offer-title">10年後も元気なママでいるために、<br>まず体のことを話しに来てください。</h2>
     <p class="offer-unit" style="margin-bottom:18px;">初回限定価格（税込）</p>
     <div class="price-list">
-      <div class="price-row"><span class="price-name">産後整体</span><span class="price-value">¥3,980</span></div>
+      <div class="price-row"><span class="price-name">産後整体</span><span class="price-value">¥4,980</span></div>
       <div class="price-row"><span class="price-name">マタニティ整体</span><span class="price-value">¥4,980</span></div>
-      <div class="price-row"><span class="price-name">赤ちゃん整体</span><span class="price-value">¥4,980</span></div>
     </div>
+    <p class="note" style="font-size:12px;color:var(--mid-gray);line-height:1.8;margin:-18px 0 30px;">※赤ちゃん整体は、産後整体をご利用の方のみにご提供しています。<br>赤ちゃん整体のみでの受付は終了しました。</p>
     <div class="cta-block">
       <a href="https://lin.ee/V1Rg8Bm" class="btn-line" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.169 2 11.29c0 4.359 2.857 8.034 6.943 9.418.508.094.694-.223.694-.494 0-.244-.009-.891-.014-1.749-2.825.622-3.421-1.374-3.421-1.374-.462-1.189-1.128-1.505-1.128-1.505-.922-.638.07-.625.07-.625 1.02.073 1.556 1.059 1.556 1.059.906 1.573 2.378 1.118 2.956.855.092-.664.354-1.118.644-1.375-2.255-.26-4.625-1.143-4.625-5.088 0-1.124.394-2.043 1.04-2.764-.104-.258-.451-1.307.099-2.724 0 0 .847-.276 2.775 1.051A9.527 9.527 0 0 1 12 6.836c.857.004 1.72.117 2.526.344 1.926-1.327 2.771-1.051 2.771-1.051.552 1.417.205 2.466.101 2.724.648.721 1.039 1.64 1.039 2.764 0 3.955-2.374 4.825-4.636 5.079.365.318.69.947.69 1.908 0 1.378-.013 2.489-.013 2.828 0 .274.184.593.699.493C19.146 19.32 22 15.647 22 11.29 22 6.169 17.523 2 12 2z"/></svg>
@@ -1142,6 +1217,16 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+</script>
+<!-- FAQアコーディオン: 質問をタップで答えを開閉 -->
+<script>
+  document.querySelectorAll('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
 </script>
 <!-- 予約ボタンのクリックをGoogle広告のコンバージョンとして計測 -->
 <script>
