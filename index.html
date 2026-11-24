@@ -221,22 +221,34 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
   }
   .hero-catch-wrap {
     position: relative;
+    overflow: hidden;
+    padding: 40px 0 56px;
     margin-bottom: 36px;
+  }
+  .hero-catch-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(253,246,235,0.92) 0%, rgba(253,246,235,0.62) 48%, rgba(253,246,235,0.18) 100%);
+    z-index: 1;
+    pointer-events: none;
     opacity: 0;
     animation: fadeUp 0.9s ease 0.25s forwards;
   }
   .hero-bg-photo {
     position: absolute;
-    top: 50%;
-    right: -20px;
-    transform: translateY(-50%);
-    width: 60%;
-    opacity: 0.22;
+    inset: 0;
+    transform: none;
+    width: 100%;
+    opacity: 0.55;
     pointer-events: none;
+    z-index: 0;
   }
   .hero-bg-photo img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
+    object-position: 100% 0%;
     display: block;
   }
   .hero-catch {
@@ -244,7 +256,7 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     opacity: 1;
     animation: none;
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
   .hero-photo { display: none; }
   .hero-salon-photo {
@@ -756,21 +768,22 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     <span class="hero-label">Postnatal Care Salon · Kawagoe, Saitama</span>
     <div class="hero-catch-wrap">
       <div class="hero-bg-photo">
-        <img src="images/mother-baby.png" alt="">
+        <img src="images/mother-baby.jpg" alt="">
       </div>
       <h1 class="hero-catch">
-        <span>10年後も元気なママでいるために。</span><br>
-        赤ちゃんと一緒に、<br>
-        産後ケアはじめませんか。
+        産後の痛みは、<br>
+        <span>当たり前じゃない</span>。
       </h1>
     </div>
+    <p class="hero-sub" style="font-family:var(--font-serif);font-size:clamp(16px,2.6vw,20px);color:var(--sage-dark);line-height:1.9;margin:0 0 26px;opacity:0;animation:fadeUp 0.9s ease 0.35s forwards;">腰・股関節・肩の痛みに、3か月かけて向き合う。<br>
+      痛みに特化した、助産師による伴走型・産後リハビリ整体。</p>
     <div class="hero-body">
-      <p>ママは、家族の中の太陽です。<br>
-      あなたが元気だと、家族も明るくなります。</p>
-      <p>でも産後の自分のことは後回しにしていませんか？<br>
-      そのつらさ、まだ諦めなくて大丈夫です。</p>
-      <p>新河岸・完全プライベートサロン<br>
-      赤ちゃん連れでどうぞ気軽にいらしてください。</p>
+      <p>助産師が一人ひとりに合わせるパーソナル整体で、<br>
+      痛みの原因になる姿勢・呼吸・身体の使い方を整え、<br>
+      運動を再開できる身体づくりまでサポートします。</p>
+    </div>
+    <div class="hero-cta">
+      <a href="https://reservia.jp/shop/reserve/926f805084?utm_source=route&utm_medium=homepage&utm_campaign=analysis&reserve_via=homepage" class="btn-reserve" target="_blank" rel="noopener">初回評価・体験 8,800円 のご予約 →</a>
     </div>
     <p class="hero-salon">陽 -Akari- ｜ マタニティ産後専門整体・赤ちゃん整体</p>
     <div class="hero-salon-photo">
@@ -796,9 +809,8 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
       <li>赤ちゃんのこと専門家に相談したい</li>
     </ul>
     <div class="worries-close">
-      一つでも当てはまるなら、このページを読み続けてください。<br>
-      そのつらさ、あなたのせいではありません。<br>
-      産後の体には、産後の変化に合わせたケアが大切です。
+      その痛み、あなたのせいではありません。<br>
+      産後の体には、原因に合わせた専門のケアが必要です。
     </div>
     <div class="cta-block" style="margin-top:40px;">
       <a href="https://lin.ee/V1Rg8Bm" class="btn-line" target="_blank" rel="noopener">
@@ -814,13 +826,13 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
 <section id="difference">
   <div class="inner reveal">
     <span class="section-label">Why Akari</span>
-    <h2 class="difference-catch">骨盤矯正はどこも同じ、<br>と思っていませんか？</h2>
+    <h2 class="difference-catch">産後の痛みは、<br>骨盤矯正だけで変わりますか？</h2>
     <div style="margin:8px 0 30px; border-radius:12px; overflow:hidden;">
       <img src="images/room.jpg" alt="陽（Akari）の施術ルーム。施術ベッドと赤ちゃん用ベッドを完備した完全プライベート空間" class="lp-photo">
     </div>
     <div class="diff-body">
       <p>産後の骨盤矯正に通ったけど、電気治療がほとんどだった——そんな声をよく聞きます。</p>
-      <p>陽（Akari）は、助産師として19年間産後のママたちと関わり続けてきた経験をもとに、一人ひとりの体の状態を丁寧に見ながら、手技でしっかり整えます。</p>
+      <p>陽（Akari）は、疼痛特化型の産後整体です。助産師として19年間産後のママたちと関わり続けてきた経験をもとに、痛みの場所だけでなく、なぜ痛むのか — 姿勢・呼吸・身体の使い方まで評価し、一人ひとりの状態に合わせて手技でしっかり整えます。</p>
     </div>
     <div class="diff-quote">
       「お一人おひとりのお体に合わせた施術をご提供します。」<br>
@@ -830,8 +842,8 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
       <div class="diff-card">
         <div class="diff-card-num">1</div>
         <div>
-          <div class="diff-card-title">助産師による産後特化の施術</div>
-          <div class="diff-card-desc">一般の整体と異なるところは、妊娠・出産・産後まで熟知した助産師があなたのお悩みに対応します。医療の視点から安心して受けられます。</div>
+          <div class="diff-card-title">疼痛特化型・助産師による産後整体</div>
+          <div class="diff-card-desc">一般の整体と異なるところは、妊娠・出産・産後まで熟知した助産師が、あなたの痛みの原因を評価して対応します。医療の視点から安心して受けられます。</div>
         </div>
       </div>
       <div class="diff-card">
@@ -845,7 +857,7 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
         <div class="diff-card-num">3</div>
         <div>
           <div class="diff-card-title">赤ちゃんと一緒に通える</div>
-          <div class="diff-card-desc">赤ちゃんと一緒で大丈夫。泣いていても、誰かを気にする心配はありません。ベビーベッドやおもちゃもご用意しています。<br><strong>毎週木曜10:00〜14:00は無料託児サービス</strong>もご利用ください。</div>
+          <div class="diff-card-desc">赤ちゃんと一緒で大丈夫。泣いていても、誰かを気にする心配はありません。ベビーベッドやおもちゃもご用意しています。<br><strong>毎週月・木 10:00〜14:00は無料託児サービス</strong>もご利用ください。</div>
         </div>
       </div>
       <div class="diff-card">
@@ -873,7 +885,7 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
       <div class="reason-item">
         <span class="reason-num">Reason 02</span>
         <div class="reason-title">赤ちゃん連れOK。無料託児サービスもご用意</div>
-        <div class="reason-desc">授乳・おむつ替えもOK。泣いてしまっても大丈夫。赤ちゃんのペースに合わせながら、ゆっくり施術を進めます。<br>さらに、<strong>毎週木曜 10:00〜14:00は無料託児サービス</strong>をご用意。「預け先がないから通えない」を、なくしました。</div>
+        <div class="reason-desc">授乳・おむつ替えもOK。泣いてしまっても大丈夫。赤ちゃんのペースに合わせながら、ゆっくり施術を進めます。<br>さらに、<strong>毎週月・木 10:00〜14:00は無料託児サービス</strong>をご用意。「預け先がないから通えない」を、なくしました。</div>
       </div>
       <div class="reason-item">
         <span class="reason-num">Reason 03</span>
@@ -883,7 +895,7 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
       <div class="reason-item">
         <span class="reason-num">Reason 04</span>
         <div class="reason-title">育児の相談も一緒にできる</div>
-        <div class="reason-desc">施術中に育児の悩みを話せます。体のケアと育児サポートが同時にできるのはここだけ。</div>
+        <div class="reason-desc">産後リハビリ整体には、育児相談の時間もございます。体のケアと育児のサポートができるのは、ここだけです。</div>
       </div>
       <div class="reason-item">
         <span class="reason-num">Reason 05</span>
@@ -925,17 +937,14 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
     <span class="section-label">Our Promise</span>
     <h2 class="why-catch">初回価格でご案内する理由</h2>
     <div class="why-body">
-      <p>「初回お試し価格」というと、なんとなく不安に感じる方もいるかもしれません。</p>
-      <p>陽（Akari）の施術は、初回から本気です。<br>
-      カウンセリングで体の状態をしっかり確認しながら、オーダーメイドで対応いたします。</p>
-      <p>初回価格でご案内している理由はひとつ。<br>
-      まず一度、体のことを話しに来てほしいから。<br>
-      産後のつらさを「仕方ない」で終わらせてほしくないのです。</p>
+      <p>陽（Akari）の初回は「お試し」ではありません。<br>
+      カウンセリングで体の状態をしっかり確認し、オーダーメイドで施術します。</p>
+      <p>価格を抑えているのは、産後のつらさを一人で抱え込まず、まず一度相談に来てほしいからです。</p>
     </div>
     <div class="why-promise">
-      産後歴19年の産後ケア専門家が、<br>
+      助産師歴19年の産後ケア専門家が、<br>
       丁寧に・楽しく・そっと整えます。<br>
-      ママと赤ちゃん、両方向を照らせるサロンだからできることです。
+      ママと赤ちゃん、両方を照らせるサロンだからできることです。
     </div>
   </div>
 </section>
@@ -1065,7 +1074,7 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
       </button>
       <div class="faq-a">
         <span class="faq-a-label">A</span>
-        <span class="faq-a-text">はい、通えます。マタニティ専用メニューをご用意しています。妊娠の状態を確認しながら丁寧に対応いたします。ただし、切迫早産や前置胎盤等指摘されている方は施術出来かねます。施術後はお腹がふわふわになるので赤ちゃんのスペースも広がります。骨盤位の方は一度ご相談ください。</span>
+        <span class="faq-a-text">はい、通えます。マタニティ専用メニューをご用意しています。妊娠の状態を確認しながら丁寧に対応いたします。ただし、切迫早産や前置胎盤等指摘されている方は施術出来かねます。心配な方は、医師にマタニティ整体を受けてもいいか許可をもらってください。施術後はお腹がふわふわになるので赤ちゃんのスペースも広がります。骨盤位の方は一度ご相談ください。</span>
       </div>
     </div>
 
@@ -1145,7 +1154,7 @@ src="https://www.facebook.com/tr?id=1923407814695448&ev=PageView&noscript=1"
 <section id="offer2">
   <div class="inner reveal">
     <span class="offer-tag">FIRST VISIT CAMPAIGN</span>
-    <h2 class="offer-title">10年後も元気なママでいるために、<br>まず体のことを話しに来てください。</h2>
+    <h2 class="offer-title">10年後も元気なママでいるために。</h2>
     <p class="offer-unit" style="margin-bottom:18px;">初回限定価格（税込）</p>
     <div class="price-list">
       <div class="price-row"><span class="price-name">産後整体</span><span class="price-value">¥8,800</span></div>
